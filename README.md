@@ -24,6 +24,7 @@ cd pylon-extension
 
 **Option A: UI input (recommended)**
 
+- API key is stored in the 1Password Shared vault and it is called "Pylon API Token"
 - Leave `config.json` as-is
 - After loading the extension, enter your token in the popup
 - Token is saved to session storage (cleared when browser closes)
