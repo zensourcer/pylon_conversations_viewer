@@ -81,6 +81,19 @@
     els.status.innerHTML = "";
   }
 
+  function sanitizeMessageHtml(html) {
+    const div = document.createElement("div");
+    div.innerHTML = html;
+    div.querySelectorAll("[style]").forEach((el) => {
+      el.style.removeProperty("color");
+      el.style.removeProperty("background-color");
+      el.style.removeProperty("background");
+      if (!el.style.cssText) el.removeAttribute("style");
+    });
+    div.querySelectorAll("[color]").forEach((el) => el.removeAttribute("color"));
+    return div.innerHTML;
+  }
+
   function escapeHtml(s) {
     return String(s)
       .replace(/&/g, "&amp;")
@@ -193,7 +206,7 @@
           '<span class="msg-time">' + escapeHtml(time) + '</span>' +
         '</div>' +
         '<div class="msg-body' + (messageHtml ? '' : ' msg-body--text') + '">' +
-          (messageHtml || escapeHtml(body || "(empty)")) +
+          (messageHtml ? sanitizeMessageHtml(messageHtml) : escapeHtml(body || "(empty)")) +
         '</div>';
 
       card.appendChild(content);

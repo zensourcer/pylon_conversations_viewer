@@ -259,10 +259,13 @@ body::-webkit-scrollbar-thumb { background: #2a2d3a; border-radius: 3px; }
 .msg-body--text { white-space: pre-wrap; }
 
 /* ── elements that arrive inside message_html ── */
+/* Force all text readable regardless of inline styles or email client colors */
+.msg-body *            { color: inherit !important; background-color: transparent !important; }
 .msg-body p            { margin: 0 0 6px; }
 .msg-body p:last-child { margin-bottom: 0; }
-.msg-body a            { color: #a5b4fc; text-decoration: underline; }
-.msg-body a:hover      { color: #c7d2fe; }
+.msg-body a,
+.msg-body a:visited    { color: #a5b4fc !important; text-decoration: underline; }
+.msg-body a:hover      { color: #c7d2fe !important; }
 .msg-body img          { max-width: 100%; height: auto; border-radius: 4px; margin: 4px 0; display: block; }
 .msg-body ul,
 .msg-body ol           { padding-left: 18px; margin: 4px 0; }
@@ -271,6 +274,7 @@ body::-webkit-scrollbar-thumb { background: #2a2d3a; border-radius: 3px; }
 .msg-body b            { font-weight: 600; }
 .msg-body em,
 .msg-body i            { font-style: italic; color: #94a3b8; }
+.msg-body blockquote   { border-left: 3px solid #2a2d3a; margin: 6px 0 6px 4px; padding: 4px 8px; color: #64748b; font-style: italic; }
 .msg-body pre          { background: #0c0e14; border: 1px solid #1a1d26; border-radius: 6px; padding: 8px 10px; overflow-x: auto; font-size: 12px; margin: 4px 0; }
 .msg-body code         { background: #0c0e14; border: 1px solid #1a1d26; border-radius: 3px; padding: 1px 5px; font-size: 12px; font-family: "SF Mono", "Fira Code", monospace; }
 .msg-body pre code     { background: none; border: none; padding: 0; }
