@@ -4,14 +4,14 @@
   "description": "Fetches and displays messages for Pylon conversations",
   "manifest_version": 3,
   "permissions": ["storage", "windows", "webNavigation"],
-  "host_permissions": ["https://api.usepylon.com/*"],
+  "host_permissions": ["https://api.usepylon.com/*", "https://app.asana.com/*"],
   "action": {},
   "background": {
     "service_worker": "background.js"
   },
   "content_scripts": [
     {
-      "matches": ["https://app.usepylon.com/*"],
+      "matches": ["https://app.usepylon.com/*", "https://app.asana.com/*"],
       "js": ["content.js"],
       "run_at": "document_start"
     }

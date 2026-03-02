@@ -70,7 +70,8 @@ async function handleConversation(id) {
 chrome.webNavigation.onCompleted.addListener(async (details) => {
   if (details.frameId !== 0) return;
   try {
-    const id = new URL(details.url).searchParams.get("conversationID");
+    const params = new URL(details.url).searchParams;
+    const id = params.get("conversationID") ?? params.get("issueNumber");
     if (!id) return;
 
     // Close source tab if it's not the last tab
@@ -82,7 +83,7 @@ chrome.webNavigation.onCompleted.addListener(async (details) => {
 
     await handleConversation(id);
   } catch {}
-}, { urlFilter: [{ urlContains: "conversationID" }] });
+}, { urlFilter: [{ urlContains: "conversationID" }, { urlContains: "issueNumber" }] });
 
 // Content script signal via storage (most reliable)
 chrome.storage.onChanged.addListener(async (changes, areaName) => {

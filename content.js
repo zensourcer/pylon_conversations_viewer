@@ -8,7 +8,8 @@
 
   function extractId(url) {
     try {
-      return new URL(url).searchParams.get("conversationID");
+      const params = new URL(url).searchParams;
+      return params.get("conversationID") ?? params.get("issueNumber");
     } catch {
       return null;
     }
