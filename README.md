@@ -52,7 +52,7 @@ cd pylon-extension
 
 ### 4. Test it
 
-1. Navigate to `app.usepylon.com`
+1. Navigate to Asana
 2. Click any conversation link
 3. Popup window opens with messages
 4. Original tab closes automatically (if opened in new tab)
